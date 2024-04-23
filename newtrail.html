@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipment Tracking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    #tracking-container {
+      width: 90%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #progress-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .step {
+      flex-basis: calc(25% - 10px);
+      text-align: center;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      margin-top: 5px;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background-color: #ddd;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .step-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #3498db;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 0 auto;
+    }
+
+    .active {
+      background-color: #2ecc71;
+    }
+
+    #tracking-info {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="tracking-container">
+  <div id="progress-bar">
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-circle">1</div>
+      <div class="step-text">Order Placed</div>
+    </div>
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-circle">2</div>
+      <div class="step-text">Shipped</div>
+    </div>
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-circle">3</div>
+      <div class="step-text">Out for Delivery</div>
+    </div>
+    <div class="step">
+      <div class="step-line"></div>
+      <div class="step-circle">4</div>
+      <div class="step-text">Delivered</div>
+    </div>
+  </div>
+
+  <div id="tracking-info">
+    <p id="status">Status: Order Placed</p>
+    <p id="location">Location: Warehouse</p>
+    <button onclick="updateStatus()">Update Status</button>
+  </div>
+</div>
+
+<script>
+  let currentStep = 1;
+
+  function updateStatus() {
+    currentStep++;
+    if (currentStep > 4) {
+      currentStep = 4;
+    }
+
+    updateProgressBar();
+  }
+
+  function updateProgressBar() {
+    const steps = document.querySelectorAll('.step');
+    const statusText = document.getElementById('status');
+    const locationText = document.getElementById('location');
+
+    steps.forEach((step, index) => {
+      const circle = step.querySelector('.step-circle');
+      const line = step.querySelector('.step-line');
+      const stepText = step.querySelector('.step-text');
+
+      if (index < currentStep - 1) {
+        circle.classList.add('active');
+        line.classList.add('active');
+        stepText.classList.add('active');
+      } else {
+        circle.classList.remove('active');
+        line.classList.remove('active');
+        stepText.classList.remove('active');
+      }
+    });
+
+    switch (currentStep) {
+      case 1:
+        statusText.textContent = 'Status: Order Placed';
+        locationText.textContent = 'Location: Warehouse';
+        break;
+      case 2:
+        statusText.textContent = 'Status: Shipped';
+        locationText.textContent = 'Location: In Transit';
+        break;
+      case 3:
+        statusText.textContent = 'Status: Out for Delivery';
+        locationText.textContent = 'Location: Near Your Area';
+        break;
+      case 4:
+        statusText.textContent = 'Status: Delivered';
+        locationText.textContent = 'Location: Delivered to Your Address';
+        break;
+    }
+  }
+
+  // Initial setup
+  updateProgressBar();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

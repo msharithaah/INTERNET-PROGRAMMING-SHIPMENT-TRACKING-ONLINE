@@ -1,0 +1,89 @@
+body {
+
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to right,rgba(5, 97, 216, 0.674), rgba(6, 207, 252, 0.856) , rgba(5, 97, 216, 0.674));
+}
+
+header {
+    
+    background-image: linear-gradient(to right,rgba(5, 97, 216, 0.674), rgba(6, 207, 252, 0.856) , rgba(5, 97, 216, 0.674));
+    /*background-image: linear-gradient(to right,rgba(5, 110, 158, 0.674), rgba(6, 207, 252, 0.856) , rgba(5, 110, 158, 0.674));*/
+    color: #fff;
+    
+  text-shadow: 2px 2px 4px #0151a6;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #0051b4;
+    
+
+    text-align: center;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.progress-container {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 20px;
+    background-color: #0074D9;
+    border-radius: 5px;
+}
+
+.progress-label {
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+#trackingNumber {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+#trackButton {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#trackingResults {
+    text-align: left;
+}
+footer {
+    background-color: #0051b4;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./trail.css">
+    <title>Shipment Tracking</title>
+    <script>
+        document.getElementById("trackButton").addEventListener("click", function() {
+            
+            var num = document.getElementById("trackingNumber").value;
+            num = num.replace(/\D/g,'');
+            num = num[0] + num[1]
+            num = parseInt(num)
+            
+            let progress = 0;
+            const progressBar = document.getElementById("progressBar");
+            const progressLabel = document.getElementById("progressLabel");
+
+            
+            const interval = setInterval(function() {
+                progress += 1;
+                if (progress <= num) {
+                    progressBar.style.width = progress + "%";
+                    progressLabel.innerText = progress + "%";
+                } else {
+                    clearInterval(interval);
+                    progressLabel.innerText = "In Transit";
+                }
+                
+            }, 100);
+
+            
+            document.getElementById("trackingResults").style.display = "block";
+        });
+        
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Shipment Tracking System</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trail.html">Track Shipment</a></li>
+            
+        </ul>
+    </nav>
+    <main>
+        <h2>Track Shipment</h2>
+        <form id="trackForm">
+            <label for="trackingNumber">Enter Tracking Number:</label>
+            <input type="text" id="trackingNumber" name="trackingNumber" required>
+            <button type="button" onclick="trackShipment()">Track</button>
+        </form>
+        <div id="shipmentStatus">
+            <h3>Shipment Status</h3>
+            <div class="progress-bar">
+                <div id="progress"></div>
+            </div>
+            <p id="statusText">Waiting for tracking...</p>
+        </div>
+    </main>
+    <br>
+    <br>
+    <footer>
+        <p>&copy; 2023 Shipment Tracking System</p>
+    </footer>
+    
+</body>
+</html>
+
+
+    
